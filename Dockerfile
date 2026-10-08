@@ -46,7 +46,8 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the virtual environment from the base stage
-COPY --from=base /app /app
+COPY --from=base /app/.venv /app/.venv
+COPY --from=base /app/src /app/src
 
 # Add virtual environment to PATH
 ENV PATH="/app/.venv/bin:$PATH"
